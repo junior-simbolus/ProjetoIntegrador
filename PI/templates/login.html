@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Cliente Simbolus</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+</head>
+<body>
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+      <script>
+
+      </script>
+        <div>
+            <ul align="center">
+            {% for msg in mensagens %}
+                {{msg}}
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <img src="/static/images/Logo.png" alt=""/><br>
+        <div class="page">
+            <form  class="formLogin" action="/login2" method="post">
+                <fieldset>
+                    <legend>Login</legend>
+                    <label for="user">CNPJ do Cliente</label>
+                    <input type="text" name="user" id="user" placeholder="Digite seu CNPJ" autofocus="true" />
+                    <label for="pass">Senha</label>
+                    <input type="password" name="pass" id="pass" placeholder="Digite sua senha" />
+                    <br><br>
+                    <input type="submit" value="Acessar" class="btn" />
+                </fieldset>
+        </form>
+    </div>
+
+</body>
+</html>

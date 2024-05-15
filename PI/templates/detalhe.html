@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Solicitações</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/detalhe.css')}}">
+</head>
+
+<body>
+ <img src="/static/images/Logo.png" alt=""/><br>
+ {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        <div>
+            <ul align="center">
+            {% for msg in mensagens %}
+                {{msg}}
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="page">
+        <form  class="formDetalhe">
+            <fieldset>
+                <legend>Detalhe da Solicitação</legend>
+                <table class="table" border="1">
+                    <tr>
+                        <td align="center" colspan="3"><strong>ID DA SOLICITACAO</strong></td>
+                        <td align="center" colspan="8"><strong>{{retorno.des_codigo}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="3"><strong>Data Solicitação</strong></td>
+                        <td align="center" colspan="8"><strong>{{retorno.des_lancamento}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="3"><strong>Solicitado por/Contato</strong></td>
+                        <td align="center" colspan="8"><strong>{{retorno.des_contato}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="3"><strong>Status:</strong></td>
+                        <td align="center" colspan="8"><strong>{{retorno.des_status}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="3"><strong>Assunto:</strong></td>
+                        <td align="center" colspan="8"><strong>{{retorno.des_assunto}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="3""><strong>Prazo:</strong></td>
+                        <td align="center" colspan="8"><strong>{{retorno.des_prazo}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="3"><strong>Valor:</strong></td>
+                        <td align="center" colspan="8"><strong>{{retorno.des_valor}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="3"><strong>Descrição da Solicitação:</strong></td>
+                        <td align="center" colspan="8"><strong>{{retorno.des_descricao}}</strong></td>
+                    </tr>
+                  </table>
+                <a href="/listar2/{{idCli}}/{{sessao}}/{{99}}/0" align="center">Voltar para a Lista de Serviços</a>
+            </fieldset>
+        <br> <label align="center">Cliente:{{idCli}}-{{nome_cliente}}</label>
+        </form>
+    </div>
+</body>
+</html>
+

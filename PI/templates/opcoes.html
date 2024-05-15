@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opções do Cliente</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/opcoes.css')}}">
+</head>
+
+<body>
+  {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        <div>
+            <ul align="center">
+            {% for msg in mensagens %}
+                {{msg}}
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <img src="/static/images/Logo.png" alt=""/><br>
+    <div class="page">
+        <form class="formOpcoes">
+            <fieldset>
+                <legend>Opções</legend>
+                <table>
+                <tr>
+                    <td><h1 align="center"><a href="/inserir_solicitacao2/{{idCli}}/0">Lançar Solicitação de Serviço</a></h1></td>
+                </tr>
+                <tr>
+                    <td><h1 align="center"><a href="/listar2/{{idCli}}/{{sessao}}/{{99}}/0">Listar solicitações</a></h1></td>
+                </tr>
+                <tr>
+                    <td><h1 align="center"><a href="/logoff/{{sessao}}">Sair do Sistema</a></h1></td>
+                </tr>
+                </table>
+            </fieldset>
+            <br>
+          <label align="center">Cliente: {{idCli}} - {{nome_cliente}}</label>
+      </form>
+    </div>
+</body>
+</html>

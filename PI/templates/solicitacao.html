@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Serviços</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/solicitacoes.css')}}">
+</head>
+
+<body>
+ <img src="/static/images/Logo.png" alt=""/><br>
+ {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        <div>
+            <ul align="center">
+            {% for msg in mensagens %}
+                {{msg}}
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="page">
+        <form  class="formSolicitacao" action="/inclui_sol2/{{idCli}}/0" method="post">
+            <fieldset>
+                <legend>Solicitação de Serviço</legend>
+                <label for="sis">Sistema</label><br>
+                <select id="sis" name="sis" class="select" required>
+                  {% for message in sistemas.sistemas %}
+                    <option value="{{message.codigo}}">{{message.nome}}</option>
+                  {% endfor %}
+                </select><br><br>
+                <label for="contato">Solicitante/Contato</label><br>
+                <input type="text" name="contato" id="contato"  required><br><br>
+                <label for="tipo">Tipo de Solicitação</label><br>
+                <select id="tipo" name="tipo" required class="select">
+                    <option value="CORREÇÃO">CORREÇÃO</option>
+                    <option value="CUSTOMIZAÇÃO">CUSTOMIZAÇÃO</option>
+                    <option value="VISITA TÉCNICA">VISITA TÉCNICA</option>
+                    <option value="TREINAMENTO ON-LINE">TREINAMENTO ON-LINE</option>
+                    <option value="TREINAMENTO IN-LOCO">TREINAMENTO IN-LOCO</option>
+                    <option value="SUPORTE/DUVIDA">SUPORTE/DUVIDA</option>
+                    <option value="NOVO MÓDULO">NOVO MÓDULO</option>
+                </select><br><br>
+                <label for="obs">Escreva sua solicitação detalhada</label><br>
+                <textarea name="obs" id="obs" rows="9", cols="37"></textarea><br><br>
+                <button class="btn" onclick="validar()">Lançar</button><br><br>
+                <a href="/" align="center">Voltar para o menu</a>
+            </fieldset>
+        <br> <label align="center">Cliente:{{idCli}}-{{nome_cliente}}</label>
+        </form>
+    </div>
+</body>
+</html>
+

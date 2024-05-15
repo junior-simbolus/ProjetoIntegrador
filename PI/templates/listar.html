@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Solicitações</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/listar.css')}}">
+</head>
+
+<body>
+ <img src="/static/images/Logo.png" alt=""/><br>
+ {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        <div>
+            <ul align="center">
+            {% for msg in mensagens %}
+                {{msg}}
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="page">
+        <form  class="formLista">
+            <fieldset>
+                <legend>Lista de Solicitações</legend>
+                <table class="table" border="1">
+                    <tr>
+                    <td align="center"><a href="/listar2/{{idCli}}/{{sessao}}/{{11}}/0"><strong>EM ANALISE</strong></a></td>
+                    <td align="center"><a href="/listar2/{{idCli}}/{{sessao}}/{{0}}/0"><strong>APROVADO</strong></a></td>
+                    <td align="center"><a href="/listar2/{{idCli}}/{{sessao}}/{{1}}/0"><strong>DESENVOLVENDO</strong></a></td>
+                    <td align="center"><a href="/listar2/{{idCli}}/{{sessao}}/{{2}}/0"><strong>NÃO APROVADO</strong></a></td>
+                    <td align="center"><a href="/listar2/{{idCli}}/{{sessao}}/{{3}}/0"><strong>EM TESTE</strong></a></td>
+                    <td align="center"><a href="/listar2/{{idCli}}/{{sessao}}/{{4}}/0"><strong>FINALIZADO</strong></a></td>
+                    <td align="center"><a href="/listar2/{{idCli}}/{{sessao}}/{{99}}/0"><strong>TODOS</strong></a></td>
+                    </tr>
+                </table>
+                <table class="table" border="1">
+                    <tr>
+                    <td align="center"><strong>CODIGO</strong></td>
+                    <td align="center"><strong>LANÇAMENTO</strong></td>
+                    <td align="center"><strong>ASSUNTO</strong></td>
+                    <td align="center"><strong>STATUS</strong></td>
+                    <td aling="center"><strong>VALOR</strong></td>
+                    <td align="center"><strong>APROVAR VALOR</strong></td>
+                    </tr>
+                  {% for message in solicitacoes.solicitacoes %}
+                    <tr>
+                        <td align="center"><a href="/carregar_sol2/{{message.id}}/0">{{message.id}}</a></td>
+                        <td align="center"><a href="/carregar_sol2/{{message.id}}/0">{{message.lancamento}}</a></td>
+                        <td align="center"><a href="/carregar_sol2/{{message.id}}/0">{{message.assunto}}</a></td>
+                        <td align="center"><a href="/carregar_sol2/{{message.id}}/0">{{message.status}}</a></td>
+                        <td align="center"><a href="/carregar_sol2/{{message.id}}/0">{{message.valor}}</a></td>
+                        <td align="center"><a href="/aprovar_sol2/{{message.id}}/0">{{message.aprovar}}</a></td>
+                    </tr>
+                  {% endfor %}
+                  </table>
+                <a href="/" align="center">Voltar para o menu</a>
+            </fieldset>
+        <br> <label align="center">Cliente:{{idCli}}-{{nome_cliente}}</label>
+        </form>
+    </div>
+</body>
+</html>
+
